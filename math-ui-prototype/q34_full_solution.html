@@ -1,0 +1,935 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Q34 Full Solution</title>
+  <style>
+    body {
+      font-family: Georgia, serif;
+      max-width: 900px;
+      margin: 40px auto;
+      line-height: 1.6;
+      padding: 0 16px 40px;
+    }
+
+    .link-term {
+      color: #0b63ce;
+      text-decoration: underline;
+      font-weight: 600;
+    }
+
+    .card {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 16px;
+      background: #fafafa;
+      margin: 16px 0;
+    }
+
+    .solution-box {
+      border-color: #9ec5fe;
+      background: #f4f8ff;
+    }
+
+    .solution-box h2 {
+      font-size: 1.15rem;
+      margin: 0;
+      font-weight: 700;
+    }
+
+    .answer-list {
+      padding-left: 24px;
+    }
+
+    .math-block {
+      margin: 12px 0;
+    }
+
+    .eq-annotated {
+      margin: 12px 0;
+      display: table;
+      border-collapse: separate;
+      border-spacing: 0 8px;
+      width: 100%;
+      table-layout: fixed;
+    }
+
+    .eq-row {
+      display: table-row;
+    }
+
+    .eq-note {
+      display: table-cell;
+      width: 230px;
+      padding-right: 10px;
+      color: #555;
+      font-size: 0.95rem;
+      vertical-align: baseline;
+    }
+
+    .eq-lhs {
+      display: table-cell;
+      width: 280px;
+      padding-right: 10px;
+      text-align: right;
+      vertical-align: baseline;
+      white-space: nowrap;
+    }
+
+    .eq-op {
+      display: table-cell;
+      width: 24px;
+      text-align: center;
+      font-weight: 700;
+      color: #555;
+      vertical-align: baseline;
+    }
+
+    .eq-rhs {
+      display: table-cell;
+      min-width: 0;
+      padding-left: 10px;
+      vertical-align: baseline;
+    }
+
+    .eq-lhs mjx-container,
+    .eq-op mjx-container,
+    .eq-rhs mjx-container {
+      margin: 0;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .eq-op mjx-container {
+      color: #555;
+    }
+
+    @media (max-width: 720px) {
+      .eq-annotated,
+      .eq-row,
+      .eq-note,
+      .eq-lhs,
+      .eq-op,
+      .eq-rhs {
+        display: block;
+        width: auto;
+      }
+
+      .eq-annotated {
+        border-spacing: 0;
+      }
+
+      .eq-row {
+        margin: 10px 0;
+      }
+
+      .eq-lhs,
+      .eq-op,
+      .eq-rhs {
+        text-align: left;
+        padding: 0;
+        white-space: normal;
+      }
+    }
+
+    .step-group {
+      border: 1px solid #d7d7d7;
+      border-radius: 10px;
+      background: #fcfcfc;
+      margin: 18px 0;
+      overflow: hidden;
+    }
+
+    .step-group[open] {
+      background: #fafafa;
+    }
+
+    .step-summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 14px 16px;
+      font-weight: 700;
+      background: #eef4ff;
+      border-bottom: 1px solid transparent;
+    }
+
+    .step-group[open] .step-summary {
+      border-bottom-color: #d7d7d7;
+    }
+
+    .step-summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .step-summary::after {
+      content: "+";
+      float: right;
+      font-size: 1.1rem;
+    }
+
+    .step-group[open] .step-summary::after {
+      content: "−";
+    }
+
+    .step-content {
+      padding: 0 16px 8px;
+    }
+
+    .substep-title {
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .highlight {
+      background: #fff3a3;
+      padding: 0 0.2em;
+      border-radius: 3px;
+    }
+  </style>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]']]
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+  <h1>Question 34</h1>
+  <p>Evaluate \( \int \frac{x^2}{(4-x^2)^{3/2}}\,dx \).</p>
+
+  <ol class="answer-list" type="a">
+    <li>\(\displaystyle \frac{2x}{\sqrt{4-x^2}} - 2\sin^{-1}\!\left(\frac{x}{2}\right) + C\)</li>
+    <li>\(\displaystyle \frac{x}{\sqrt{4-x^2}} - \sin^{-1}\!\left(\frac{x}{2}\right) + C\)</li>
+    <li>\(\displaystyle \frac{4}{\sqrt{4-x^2}} - 2\sin^{-1}\!\left(\frac{x}{2}\right) + C\)</li>
+    <li>I do not know</li>
+  </ol>
+
+  <div class="card solution-box">
+    <h2>Solution: b) \(\displaystyle \frac{x}{\sqrt{4-x^2}} - \sin^{-1}\!\left(\frac{x}{2}\right) + C\)</h2>
+  </div>
+
+  <div class="card">
+    <strong>This question is asking you to:</strong>
+    Compute an <a class="link-term" href="./definitions/antiderivative.html">antiderivative</a> by rewriting the
+    <a class="link-term" href="./definitions/denominator.html">denominator</a>
+    into a form that matches a standard
+    <a class="link-term" href="./definitions/trig-substitution.html">trigonometric substitution</a>
+    pattern, then substitute back to write the final answer in terms of \(x\).
+  </div>
+
+  <details class="step-group" open>
+    <summary class="step-summary">Step 1: Rewrite the <a class="link-term" href="./definitions/denominator.html">denominator</a> \((4-x^2)^{\frac{3}{2}}\).</summary>
+    <div class="step-content">
+      <div class="card">
+        <div class="substep-title">Step 1.1: Rewrite <a class="link-term" href="./definitions/fractional-exponents.html">fractional exponents</a></div>
+        <div class="math-block">\[\displaystyle a^{\frac{m}{n}}=\sqrt[n]{a^m}=\left(\sqrt[n]{a}\right)^m,\qquad \sqrt{a}=a^{\frac{1}{2}}.\]</div>
+      </div>
+
+      <div class="card">
+        <div class="substep-title">Step 1.2: Rewrite the power \(\frac{3}{2}\)</div>
+        <div class="eq-annotated">
+          <div class="eq-row">
+            <div class="eq-note">Rewrite \(\frac{3}{2}=\frac{1}{2}\cdot 3\)</div>
+            <div class="eq-lhs">\((4-x^2)^{\frac{3}{2}}\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\((4-x^2)^{\frac{1}{2}\cdot 3}\)</div>
+          </div>
+        </div>
+        <div class="eq-annotated">
+          <div class="eq-row">
+            <div class="eq-note">Use \(a^{bc}=(a^b)^c\)</div>
+            <div class="eq-lhs">\((4-x^2)^{\frac{1}{2}\cdot 3}\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(\left((4-x^2)^{\frac{1}{2}}\right)^3\)</div>
+          </div>
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs"></div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(\left(\sqrt{4-x^2}\right)^3\)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <details class="step-group">
+    <summary class="step-summary">Step 2: Set up <a class="link-term" href="./definitions/trig-substitution.html">trigonometric substitution</a>.</summary>
+    <div class="step-content">
+      <div class="card">
+        <div class="substep-title">Step 2.1: Define symbols</div>
+        <p>\(a\): constant, \(x\): unknown variable, \(\theta\): angle.</p>
+      </div>
+
+      <div class="card">
+        <div class="substep-title">Step 2.2: Choose the substitution</div>
+        <p>From Step 1, the denominator contains \(\sqrt{4-x^2}\), which matches the pattern \(\sqrt{a^2-x^2}\). For this specific pattern, use the trig substitution \(x=a\sin\theta\).</p>
+      </div>
+
+      <div class="card">
+        <div class="substep-title">Step 2.3: Identify \(a\) and \(x\)</div>
+        <div class="eq-annotated">
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(4-x^2\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(2^2-x^2\)</div>
+          </div>
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(a\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(2\)</div>
+          </div>
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(x\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(a\sin\theta\)</div>
+          </div>
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs"></div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(2\sin\theta\)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <details class="step-group">
+    <summary class="step-summary">Step 3: Rewrite the <a class="link-term" href="./definitions/numerator.html">numerator</a> \(x^2\).</summary>
+    <div class="step-content">
+      <div class="card">
+        <div class="substep-title">Step 3.1: Square both sides</div>
+        <div class="eq-annotated">
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(x\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(2\sin\theta\)</div>
+          </div>
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(x^2\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\((2\sin\theta)^2\)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="substep-title">Step 3.2: Apply \((ab)^2=a^2b^2\)</div>
+        <div class="eq-annotated">
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(a\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(2\)</div>
+          </div>
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(b\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(\sin\theta\)</div>
+          </div>
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\((2\sin\theta)^2\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(2^2(\sin\theta)^2\)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="substep-title">Step 3.3: Simplify</div>
+        <div class="eq-annotated">
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(2^2\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(4\)</div>
+          </div>
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\((\sin\theta)^2\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(\sin^2\theta\)</div>
+          </div>
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(2^2(\sin\theta)^2\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(4\sin^2\theta\)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <details class="step-group">
+    <summary class="step-summary">Step 4: Rewrite \(4-x^2\) in terms of \(\theta\).</summary>
+    <div class="step-content">
+      <div class="card">
+        <div class="substep-title">Step 4.1: Substitute \(x^2=4\sin^2\theta\)</div>
+        <div class="eq-annotated">
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(4-x^2\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(4-4\sin^2\theta\)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="substep-title">Step 4.2: Factor out 4</div>
+        <div class="eq-annotated">
+          <div class="eq-row">
+            <div class="eq-note">Rewrite \(4=4\cdot 1\) and factor out \(4\)</div>
+            <div class="eq-lhs">\(4-4\sin^2\theta\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(4(1)-4(\sin^2\theta)\)</div>
+          </div>
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs"></div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(4(1-\sin^2\theta)\)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="substep-title">Step 4.3: Use \(1-\sin^2\theta=\cos^2\theta\)</div>
+        <div class="eq-annotated">
+          <div class="eq-row">
+            <div class="eq-note">Use the <a class="link-term" href="./definitions/pythagorean-identity.html">trigonometric identity</a> and multiply both sides by \(4\)</div>
+            <div class="eq-lhs">\(1-\sin^2\theta\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(\cos^2\theta\)</div>
+          </div>
+          <div class="eq-row">
+            <div class="eq-note">Plug in \(x^2=4\sin^2\theta\)</div>
+            <div class="eq-lhs">\(4(1-\sin^2\theta)\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(4(\cos^2\theta)\)</div>
+          </div>
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(4-x^2\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(4\cos^2\theta\)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <details class="step-group">
+    <summary class="step-summary">Step 5: Compute \((4-x^2)^{\frac{3}{2}}\) after substitution.</summary>
+    <div class="step-content">
+      <div class="card">
+        <div class="substep-title">Step 5.1: Substitute into \(\left(\sqrt{4-x^2}\right)^3\)</div>
+        <div class="eq-annotated">
+          <div class="eq-row">
+            <div class="eq-note">Substitute \(4-x^2=4\cos^2\theta\)</div>
+            <div class="eq-lhs">\((4-x^2)^{\frac{3}{2}}\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(\left(\sqrt{4-x^2}\right)^3\)</div>
+          </div>
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(\left(\sqrt{4-x^2}\right)^3\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(\left(\sqrt{4\cos^2\theta}\right)^3\)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="substep-title">Step 5.2: Use \(\sqrt{ab}=\sqrt a\sqrt b\)</div>
+        <div class="eq-annotated">
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(a\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(4\)</div>
+          </div>
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(b\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(\cos^2\theta\)</div>
+          </div>
+          <div class="eq-row">
+            <div class="eq-note">Use the rule \((ab)^{1/2}=a^{1/2}b^{1/2}\)</div>
+            <div class="eq-lhs">\(\sqrt{4\cos^2\theta}\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(\sqrt4\,\sqrt{\cos^2\theta}\)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="substep-title">Step 5.3: Simplify \(\sqrt4\)</div>
+        <div class="eq-annotated">
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(\sqrt4\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(2\)</div>
+          </div>
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(\sqrt4\,\sqrt{\cos^2\theta}\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(2\sqrt{\cos^2\theta}\)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="substep-title">Step 5.4: Use \(\sqrt{u^2}=|u|\)</div>
+        <div class="eq-annotated">
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(u\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(\cos\theta\)</div>
+          </div>
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(\sqrt{\cos^2\theta}\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(|\cos\theta|\)</div>
+          </div>
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(2\sqrt{\cos^2\theta}\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(2|\cos\theta|\)</div>
+          </div>
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(\sqrt{4\cos^2\theta}\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(2|\cos\theta|\)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="substep-title">Step 5.5: Cube the result</div>
+        <div class="eq-annotated">
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(\left(\sqrt{4\cos^2\theta}\right)^3\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\((2|\cos\theta|)^3\)</div>
+          </div>
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs"></div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(2^3|\cos\theta|^3\)</div>
+          </div>
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs"></div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(8|\cos\theta|^3\)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="substep-title">Step 5.6: Remove the absolute value</div>
+        <div class="eq-annotated">
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(0 \le \theta \le \frac{\pi}{2}\)</div>
+            <div class="eq-op">\(\Rightarrow\)</div>
+            <div class="eq-rhs">\(\cos\theta \ge 0\)</div>
+          </div>
+          <div class="eq-row">
+            <div class="eq-note">Since \(\cos\theta \ge 0\)</div>
+            <div class="eq-lhs">\(|\cos\theta|\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(\cos\theta\)</div>
+          </div>
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(8|\cos\theta|^3\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(8\cos^3\theta\)</div>
+          </div>
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\((4-x^2)^{\frac{3}{2}}\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(8\cos^3\theta\)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <details class="step-group">
+    <summary class="step-summary">Step 6: Compute \(dx\).</summary>
+    <div class="step-content">
+      <div class="card">
+        <div class="substep-title">Step 6.1: Differentiate \(x=2\sin\theta\)</div>
+        <div class="eq-annotated">
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(x\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(2\sin\theta\)</div>
+          </div>
+          <div class="eq-row">
+            <div class="eq-note">Differentiate both sides with respect to \(\theta\)</div>
+            <div class="eq-lhs">\(\frac{dx}{d\theta}\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(\frac{d}{d\theta}(2\sin\theta)\)</div>
+          </div>
+          <div class="eq-row">
+            <div class="eq-note">Use the <a class="link-term" href="./definitions/constant-multiple-rule.html">constant multiple rule</a></div>
+            <div class="eq-lhs"></div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(2\frac{d}{d\theta}(\sin\theta)\)</div>
+          </div>
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs"></div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(2\cos\theta\)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="substep-title">Step 6.2: Write \(dx\)</div>
+        <div class="eq-annotated">
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(\frac{dx}{d\theta}\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(2\cos\theta\)</div>
+          </div>
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(d\theta\left(\frac{dx}{d\theta}\right)\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\((2\cos\theta)d\theta\)</div>
+          </div>
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(dx\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(2\cos\theta\,d\theta\)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <details class="step-group">
+    <summary class="step-summary">Step 7: Substitute into the integral.</summary>
+    <div class="step-content">
+      <div class="card">
+        <div class="substep-title">Step 7.1: List substitutions</div>
+        <div class="eq-annotated">
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(x^2\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(4\sin^2\theta\)</div>
+          </div>
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\((4-x^2)^{\frac{3}{2}}\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(8\cos^3\theta\)</div>
+          </div>
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(dx\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(2\cos\theta\,d\theta\)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="substep-title">Step 7.2: Substitute</div>
+        <div class="eq-annotated">
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(\int \frac{x^2}{(4-x^2)^{\frac{3}{2}}}\,dx\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(\int \frac{4\sin^2\theta}{8\cos^3\theta}\,(2\cos\theta\,d\theta)\)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <details class="step-group">
+    <summary class="step-summary">Step 8: Simplify the integral.</summary>
+    <div class="step-content">
+      <div class="card">
+        <div class="substep-title">Step 8.1: Multiply constants</div>
+        <div class="eq-annotated">
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(\int \frac{4\sin^2\theta}{8\cos^3\theta}\,2\cos\theta\,d\theta\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(\int \frac{4\cdot 2\sin^2\theta\cos\theta}{8\cos^3\theta}\,d\theta\)</div>
+          </div>
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs"></div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(\int \frac{8\sin^2\theta\cos\theta}{8\cos^3\theta}\,d\theta\)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="substep-title">Step 8.2: Cancel 8</div>
+        <div class="eq-annotated">
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(\int \frac{8\sin^2\theta\cos\theta}{8\cos^3\theta}\,d\theta\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(\int \frac{\sin^2\theta\cos\theta}{\cos^3\theta}\,d\theta\)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="substep-title">Step 8.3: Cancel \(\cos\theta\)</div>
+        <div class="eq-annotated">
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(\cos^3\theta\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(\cos^2\theta\cos\theta\)</div>
+          </div>
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(\int \frac{\sin^2\theta\cos\theta}{\cos^3\theta}\,d\theta\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(\int \frac{\sin^2\theta\cos\theta}{\cos^2\theta\cos\theta}\,d\theta\)</div>
+          </div>
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs"></div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(\int \frac{\sin^2\theta}{\cos^2\theta}\,d\theta\)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <details class="step-group">
+    <summary class="step-summary">Step 9: Rewrite using tangent.</summary>
+    <div class="step-content">
+      <div class="card">
+        <div class="substep-title">Step 9.1: Use the definition of tangent</div>
+        <div class="eq-annotated">
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(\tan\theta\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(\frac{\sin\theta}{\cos\theta}\)</div>
+          </div>
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(\tan^2\theta\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(\frac{\sin^2\theta}{\cos^2\theta}\)</div>
+          </div>
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(\int \frac{\sin^2\theta}{\cos^2\theta}\,d\theta\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(\int \tan^2\theta\,d\theta\)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <details class="step-group">
+    <summary class="step-summary">Step 10: Integrate in \(\theta\).</summary>
+    <div class="step-content">
+      <div class="card">
+        <div class="substep-title">Step 10.1: Use \(\tan^2\theta=\sec^2\theta-1\)</div>
+        <div class="eq-annotated">
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(\tan^2\theta\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(\sec^2\theta - 1\)</div>
+          </div>
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(\int \tan^2\theta\,d\theta\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(\int (\sec^2\theta - 1)\,d\theta\)</div>
+          </div>
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs"></div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(\int \sec^2\theta\,d\theta - \int 1\,d\theta\)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="substep-title">Step 10.2: Integrate</div>
+        <div class="eq-annotated">
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(\int \sec^2\theta\,d\theta\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(\tan\theta\)</div>
+          </div>
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(\int 1\,d\theta\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(\theta\)</div>
+          </div>
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(\int \tan^2\theta\,d\theta\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(\tan\theta - \theta + C\)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <details class="step-group">
+    <summary class="step-summary">Step 11: Convert back to \(x\).</summary>
+    <div class="step-content">
+      <div class="card">
+        <div class="substep-title">Step 11.1: Find \(\theta\) using <a class="link-term" href="./definitions/inverse-sine.html">\(\sin^{-1}\)</a></div>
+        <div class="eq-annotated">
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(x\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(2\sin\theta\)</div>
+          </div>
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(\frac{1}{2}x\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(\frac{1}{2}2\sin\theta\)</div>
+          </div>
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(\frac{x}{2}\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(\sin\theta\)</div>
+          </div>
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(\theta\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(\sin^{-1}\!\left(\frac{x}{2}\right)\)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="substep-title">Step 11.2: Find \(\tan\theta\)</div>
+        <div class="eq-annotated">
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(\sin\theta\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(\frac{x}{2}\)</div>
+          </div>
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(\text{opposite}\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(x,\quad \text{hypotenuse} = 2\)</div>
+          </div>
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(\text{adjacent}^2\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(2^2-x^2\)</div>
+          </div>
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs"></div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(4-x^2\)</div>
+          </div>
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(\text{adjacent}\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(\sqrt{4-x^2}\)</div>
+          </div>
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(\tan\theta\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(\frac{\text{opposite}}{\text{adjacent}}\)</div>
+          </div>
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs"></div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(\frac{x}{\sqrt{4-x^2}}\)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <details class="step-group">
+    <summary class="step-summary">Step 12: Write the final answer and choose the correct option.</summary>
+    <div class="step-content">
+      <div class="card">
+        <div class="substep-title">Step 12.1: Substitute back</div>
+        <div class="eq-annotated">
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs">\(\int \frac{x^2}{(4-x^2)^{\frac{3}{2}}}\,dx\)</div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(\tan\theta - \theta + C\)</div>
+          </div>
+          <div class="eq-row">
+            <div class="eq-note"></div>
+            <div class="eq-lhs"></div>
+            <div class="eq-op">\(=\)</div>
+            <div class="eq-rhs">\(\frac{x}{\sqrt{4-x^2}} - \sin^{-1}\!\left(\frac{x}{2}\right) + C\)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="substep-title">Step 12.2: Final answer</div>
+        <p>The correct option is <span class="highlight">b</span>.</p>
+      </div>
+    </div>
+  </details>
+</body>
+</html>
