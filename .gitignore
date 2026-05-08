@@ -1,0 +1,43 @@
+# macOS
+.DS_Store
+
+# Nested repos split out from this project
+Calc2_formula_lib/
+math-ui-prototype/
+
+# Editor files
+*.code-workspace
+*~
+*.swp
+*.swo
+
+# LaTeX build artifacts
+*.4tc
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.dvi
+*.fdb_latexmk
+*.fls
+*.idx
+*.ilg
+*.ind
+*.lof
+*.log
+*.lot
+*.nav
+*.out
+*.run.xml
+*.snm
+*.synctex.gz
+*.tmp
+*.toc
+*.xdv
+*.xref
+%OUTDIR%/
+
+# Local-only leftovers moved to dedicated repos or kept out of scope
+Calc_2/Calc_Formula_Library.pdf
+Calc_2/Calc_Formula_Library.tex
+Test/

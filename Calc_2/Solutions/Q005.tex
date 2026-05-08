@@ -1,0 +1,100 @@
+% QUESTION: 5
+% STATUS: DRAFT
+% AUTHOR: DG
+% CREATED: 2026-02-02
+% LAST UPDATED: 2026-02-07
+% NOTES: 
+% hightlight the operatiosn we are doing in the equation
+
+% Question
+\section*{Question 5}
+Evaluate $\displaystyle\int\frac{(\log_8 x)^2}{x}\,dx$.
+    
+% Multiple Choices
+\begin{enumerate}[label = \alph*.]
+    \item $\displaystyle(\ln 8)\cdot(\log_8 x)^2+C$
+    \item $\displaystyle\frac{\ln 8}{3}\cdot(\log_8 x)^3+C$
+    \item $\displaystyle\frac{(\ln 8)^2}{3}\cdot(\log_8 x)^3+C$
+    \item I do not know
+\end{enumerate}
+
+\setcounter{solutionMainStep}{0}
+\setcounter{solutionSubStep}{0}
+
+% Solution Box
+\begin{tcolorbox}[breakable, colback= blue!5!white, colframe= blue!50!black, title=\textbf{Solution: b) $\displaystyle\frac{\ln 8}{3}\cdot(\log_8 x)^3+C$}]
+
+    % Step 1
+    \mainStep{5}{Use U-Substitution, Let $u = \log_8 x$}
+
+    % Step 1.1
+    \solutionStep{5}{Rewrite $\log_8 x$ using change of base formula}{\colorbox{yellow}{Change of Base Formula:} $\log_b x = \frac{\ln x}{\ln b}$. }
+
+    % Step 1.2
+    \solutionStep{5}{Apply the formula with $b=8$}{ $u = \log_8 x = \frac{\ln x}{\ln 8}$ }
+
+    % Step 2
+    \mainStep{5}{Find $du$}
+
+    % Step 2.1
+    \solutionStep{5}{Differentiate both sides of the equation}{ $\frac{du}{dx} = \frac{d}{dx}\left(\frac{\ln x}{\ln 8}\right)$ }
+
+    % Step 2.2
+    \solutionStep{5}{Use constant multiple rule for derivatives}{\colorbox{yellow}{Constant Multiple Rule:} $\frac{d}{dx}[c f(x)] = c f'(x)$. }
+
+    % Step 2.2
+    \solutionStep{5}{Apply the formula with c = $c = ln 8$}{ $\frac{d}{dx}\frac{\ln x}{ln 8} = \frac{1}{ln 8}\frac{d}{dx}(ln x)$ }
+
+    % Step 2.3
+    \solutionStep{5}{Differentiate $\ln x$}{ $\frac{d}{dx}(\ln x) = \frac{1}{x}$ }
+
+    % Step 2.4
+    \solutionStep{5}{Combine the results}{ $\frac{du}{dx} = \frac{1}{\ln 8}\cdot\frac{1}{x} = \frac{1}{x\ln 8}$ }
+
+    % Step 3
+    \mainStep{5}{Convert into differential form}
+
+    % Step 3.1
+    \solutionStep{5}{Multiply both sides by $dx$}{ $du = \frac{1}{x\ln 8}dx$ }
+
+    % Step 3.2
+    \solutionStep{5}{Solve for $\frac{1}{x}dx$}{ Multiply both sides by $\ln 8$: $(\ln 8)du = \frac{1}{x}dx$ }
+
+    % Step 4
+    \mainStep{5}{Rewrite the integral in terms of $u$}
+
+    % Step 4.1
+    \solutionStep{5}{Substitute $u = \log_8 x$}{ $(\log_8 x)^2 = u^2$ }
+
+    % Step 4.2
+    \solutionStep{5}{Substitute $\frac{1}{x}dx = (\ln 8)du$}{ $\displaystyle\int\frac{(\log_8 x)^2}{x}dx = \int u^2 (\ln 8)du$ }
+    
+    % Step 4.3
+    \solutionStep{5}{Use constant multiple rule}{\colorbox{yellow}{Constant Multiple Rule:} $\int c f(x)dx = c\int f(x)dx$. }
+
+    % Step 4.4
+    \solutionStep{5}{Rewrite the integral}{ $\int u^2 (\ln 8)du = (\ln 8)\int u^2 du$ }
+
+    % Step 5
+    \mainStep{5}{Evaluate $(\ln 8)\int u^2 du$}
+
+    % Step 5.1
+    \solutionStep{5}{Apply power rule for integrals}{\colorbox{yellow}{Power Rule for Integrals:} if $n\neq -1$, $\int u^n du = \frac{u^{n+1}}{n+1}+C$. }
+
+    % Step 5.2
+    \solutionStep{5}{Apply the rule with $n=2$}{ $\int u^2 du = \frac{u^3}{3}+C$ }
+
+    % Step 5.3
+    \solutionStep{5}{Multiply by $\ln 8$}{ $(\ln 8)\left(\frac{u^3}{3}+C\right) = \frac{\ln 8}{3}u^3 + C$ }
+
+    % Step 6
+    \mainStep{5}{Substitute back to $x$}
+
+    % Step 6.1
+    \solutionStep{5}{Replace $u$ with $\log_8 x$}{ $\frac{\ln 8}{3}u^3 + C = \frac{\ln 8}{3}(\log_8 x)^3 + C$ }
+
+    % Step 7
+    \mainStep{5}{Final Answer: the correct option is B. $\displaystyle\frac{\ln 8}{3}\cdot(\log_8 x)^3+C$ }
+
+\end{tcolorbox}
+\newpage

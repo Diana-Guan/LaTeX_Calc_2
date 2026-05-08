@@ -1,0 +1,271 @@
+% QUESTION: 10
+% STATUS: DRAFT / REVIEWED / FINAL
+% AUTHOR: Diana
+% CREATED: 2026-02-02
+% LAST UPDATED: 2026-02-02
+% NOTES: 
+
+\documentclass{article}
+
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath, amssymb, amsthm} % For better use of Math expressions
+\usepackage{hyperref} % for adding hyperlinks to the document. 
+\usepackage{comment}
+\usepackage{marginnote} % Adding notes to the margin of the document
+\reversemarginpar % Optional: to switch margin sides
+\usepackage{xcolor} % For creating the the colorbox
+% For creating tcolorboxes. 
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\usepackage{lipsum}
+\usepackage{enumitem} % for enumerating items with letters from the alphabet.
+\usepackage{tabularx} % Enables tables with flexible-with columns
+\usepackage{etoolbox} % For custom labels and logic.
+\usepackage{array} % Extend column definitions in tables
+\usepackage{witharrows} % for adding arrows
+
+% ==== Customization ====
+\usepackage [letterpaper, top=1.0in, bottom=1.0in, left=1.0in, right=1.0in, heightrounded]{geometry} % Margins of the document. 
+\renewcommand{\baselinestretch}{1.2} % space line length
+\setlength{\parindent}{0pt} % Change the size of the tab
+\setlength{\parskip}{0.8em} %Change the size between paragraphs
+
+\title{\textbf{Cal 2 - Exam Questions - Solution with Steps and SubSteps }}
+\author{}
+\date{}
+
+
+% ==== Custom Macros ====
+% Create a general counter that resets automatically per question
+\newcounter{solutionMainStep}
+\newcounter{solutionSubStep}[solutionMainStep]
+
+% Define a macro that takes question number, summary of step on (left), and explanation of the step on (right). 
+\renewcommand{\thesolutionSubStep}{\arabic{solutionMainStep}.\arabic{solutionSubStep}}
+
+% Macro for main step 
+\newcommand{\mainStep}[2]{%
+    \stepcounter{solutionMainStep}
+    \setcounter{solutionSubStep}{0} % reset sub steps.
+    \label{a-#1:\arabic{solutionMainStep}}% adding a label to the macro for later reference.
+    % Code to organize and display the bubbles
+    \begin{tcolorbox}[
+        breakable,
+        colback = gray!5!white, 
+        colframe = gray!80!black, 
+        boxrule = 0.5pt,
+        arc = 2mm, 
+        left=0pt, right=0pt, top=2pt, bottom=2pt,
+        before skip=2pt, after skip = 2pt,
+        enhanced]
+        \textbf{Step \arabic{solutionMainStep}:} \textbf{\small #2}
+    \end{tcolorbox}
+}
+
+% Macro for substep (e.g., "Step 1.1:")
+\newcommand{\solutionStep}[3]{%
+    \stepcounter{solutionSubStep}
+    \label{a-#1:\arabic{solutionMainStep}.\arabic{solutionSubStep}}% adding a label to the macro for later reference.
+    % Code to organize and display the bubbles
+    \begin{tcolorbox}[
+        breakable,
+        colback = gray!5!white,
+        colframe = gray!80!black,
+        boxrule = 0.5pt,
+        arc = 2mm,
+        left=0pt, right=0pt, top=2pt, bottom=2pt,
+        before skip=2pt, after skip=2pt,
+        enhanced]
+        \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{5cm} X}
+            \textbf{Step \arabic{solutionMainStep}.\arabic{solutionSubStep}:}\\
+            \textbf{\small #2} & #3
+        \end{tabularx}
+    \end{tcolorbox}
+}
+
+% To reference a step:
+% Use \ref{a-<question>:<step>} anywhere in the text.
+% Example: \ref{a-2:1.2} refers to Step 1.2 of Question 2.
+
+% ==== Beginning of Document ==== 
+\begin{document}
+
+\maketitle
+
+\begin{center}
+    \section*{Math Questions with the Solution}  
+\end{center}
+
+\subsection*{Questions with Solutions:}
+    % Beginning of a list will show the questions of the exam
+
+    %Question 1
+    \section*{Question 2}
+    Evaluate $\displaystyle\int\frac{15x^4}{x^5+15}\,dx$.  
+    
+    % Possible answers
+    \begin{enumerate}[label = \alph*.]
+        \item $\frac{3x^5}{\frac{1}{6}x^6+15x}+C$
+        \item $15\ln|x|+\frac{1}{5}x^4+C$
+        \item $3\ln|x^5+15|+C$
+        \item I do not know
+    \end{enumerate}
+
+    % Beginning of Solution Box
+    %\begin{tcolorbox}[colback= blue!5!white, colframe= blue!50!black, title=\textbf{Solution: c) $3 \ln |x^5 + 15| + C $}]
+     \begin{tcolorbox}[breakable, colback= blue!5!white, colframe= blue!50!black, title=\textbf{Solution: c) $\frac{1}{8}$}]
+
+        % Step-by-step modular solution. 
+        %This solution is meant to be long with a lot more steps so that a 5th grader can understand the solution. 
+        
+        % ------- Start here adding the step-by-step solution --------
+        
+        % === Step Formatting Summary ===
+        % \mainStep{<question#>}{<Step title>}
+        %   Creates a main step like "Step 1:", resets substep counter.
+        %
+        % \solutionStep{<question#>}{<Short title>}{<Detailed explanation>}
+        %   Creates a substep like "Step 1.1:" under the current main step.
+
+        % Step 1
+         \mainStep{1}{Find $f'(x)$(derivative of $f(x)$).}
+
+        % Step 1.1
+        \solutionStep{1}{Apply the power rule to $f'(x)$}{\colorbox{yellow}{Power Rule:} if $g(x) = x^n$, then $g'(x) = nx^{n-1}$. }
+
+        % Step 1.2
+        \solutionStep{1}{Differentiate $x^5$}{ $\frac{d}{dx}(x^5)$ = $5x^4$  }
+
+        % Step 1.3
+        \solutionStep{1}{ Differentiate $x^3$}{ $\frac{d}{dx}(x^3)$ = $3x^2$  }
+
+         % Step 1.4
+        \solutionStep{1}{Differentiate the constant -4}{ $\frac{d}{dx}(-4)$ = $0$  }
+
+         % Step 1.5
+        \solutionStep{1}{Combine the results}{ $f'(x) = 5x^4+3x^2$  }
+
+        % Step 2
+        \mainStep{1}{Find $f^{-1}(-2)$ by using \colorbox{yellow} {Inverse Function}: if $f(a)=b$ then $f^{-1}(b) =a$}
+
+        % Step 2.1
+        \solutionStep{1}{Set up the equation $f(x) = -2.$}{$x^5+x^3-4 = -2$}
+
+      
+        
+        % Step 2.2 Version 1
+        \solutionStep{1}{Solve for x: }{
+
+        \begin{flushleft}
+            \begin{tabbing}
+            \hspace{4.5cm} \= \kill % Set tab stop for aligning explanations to the right.
+                % Start math block and align all equations at the equal sign.
+                $\begin{aligned}[t] % [t] use to align the top of this aligned environment with the top of the line or cell it's in 
+                    x^5 + x^3 - 4 &= -2 \\
+                    x^5 + x^3 - 4 \colorbox{yellow}{+ 4}  &= -2 \colorbox{yellow}{+ 4} \\
+                    x^5 + x^3 &= 2 
+                \end{aligned}$ \>
+                % Now list matching explanations, one per line
+                \begin{tabular}[t]{@{}l@{}} % Left-align text with no extra padding
+                    Original equation. \\ % English explanations
+                    Add 4 to each side. \\
+                    Simplify both sides.
+                \end{tabular}
+            \end{tabbing}
+        \end{flushleft}
+        }
+        
+
+
+        % Step 2.3
+        \solutionStep{1}{Test simple value 1 to find solution}{
+        \begin{flushleft}
+            \begin{tabbing}
+            \hspace{4.5cm} \= \kill % Set tab stop for aligning explanations to the right.
+                % Start math block and align all equations at the equal sign.
+                $\begin{aligned}[t] % [t] use to align the top of this aligned environment with the top of the line or cell it's in 
+                    f(x) &= x^5 + x^3 - 4 \\
+                    f(\colorbox{yellow}{1}) &= \colorbox{yellow}{1}^5 + \colorbox{yellow}{1}^3 - 4  \\
+                    f(1)&= 1 + 1 - 4 \\
+                    f(1) &= -2
+                \end{aligned}$ \>
+                % Now list matching explanations, one per line
+                \begin{tabular}[t]{@{}l@{}} % Left-align text with no extra padding
+                    \\ [1ex]% English explanations
+                    Try $x=1$ in $f(x)$. \\ [1ex]
+                    Simplify. \\ [1ex]
+                    
+                \end{tabular}
+            \end{tabbing}
+        \end{flushleft}
+        }
+
+        % Step 2.4
+        \solutionStep{1}{Conclude}{Since $f(1) = -2$,  $f^{-1}(-2) = 1$ due to Inverse Function}
+
+         % Step 3
+        \mainStep{1}{ Evaluate $f'$ at $f^{-1}(-2)$}
+        
+        % Step 3.1
+        \solutionStep{1}{Substitute $x=1$ into $f'(x)$}{
+        \begin{flushleft}
+            \begin{tabbing}
+            \hspace{4.5cm} \= \kill % Set tab stop for aligning explanations to the right.
+                % Start math block and align all equations at the equal sign.
+                $\begin{aligned}[t] % [t] use to align the top of this aligned environment with the top of the line or cell it's in 
+                     f'(x) &= 5x^4+3x^2\\
+                     f'(\colorbox{yellow}{1}) &= 5(\colorbox{yellow}{1})^4 + 3(\colorbox{yellow}{1})^2 \\
+                     f'(1) &= 5(1) + 3(1)\\
+                     f'(1) &= 5 + 3 \\
+                     f'(1) &= 8
+                \end{aligned}$ \>
+                % Now list matching explanations, one per line
+                \begin{tabular}[t]{@{}l@{}} % Left-align text with no extra padding
+                    \\ [1ex]% English explanations
+                    Substitute $x$ with $1$ in $f'(x)$ \\
+                    \\
+                    \\
+                    
+                \end{tabular}
+            \end{tabbing}
+        \end{flushleft}
+        }
+
+         % Step 4
+        \mainStep{1}{Apply the inverse function derivative formula}
+
+        % Step 4.1
+
+        \solutionStep{1}{Substitute into the formula}{
+        \begin{flushleft}
+            \begin{tabbing}
+            \hspace{4.5cm} \= \kill % Set tab stop for aligning explanations to the right.
+                % Start math block and align all equations at the equal sign.
+                $\begin{aligned}[t] % [t] use to align the top of this aligned environment with the top of the line or cell it's in 
+                     \frac{d}{dx}f^{-1}(x) &= \frac{1}{f'(f^{-1}(x))}\\
+                     \frac{d}{dx}f^{-1}(x) &= \frac{1}{f'(f^{-1}(\colorbox{yellow}{-2}))} \\
+                     \frac{d}{dx}f^{-1}(x) &= \frac{1}{\colorbox{yellow}{f'(1)}}\\
+                    \frac{d}{dx}f^{-1}(x) &= \frac{1}{8}
+                \end{aligned}$ \>
+                % Now list matching explanations, one per line
+                \begin{tabular}[t]{@{}l@{}} % Left-align text with no extra padding
+                    Original Problem Equation.\\ [2.5ex]% English explanations
+                    Substitute $x$ with $-2$\\ [2.5ex]
+                     $f'(1) = 8$\\ [2.5ex]
+                \end{tabular}
+            \end{tabbing}
+        \end{flushleft}
+        }
+
+         % Step 5
+        \mainStep{1}{Final Answer: the correct option is C. $\frac{1}{8}$ }
+
+    
+    \end{tcolorbox}
+    
+
+
+\end{document}
+
+
+        \solutionStep{1}{Substitute into the formula} {$\frac{d}{dx}f^{-1}(x) = \frac{1}{f'(f^{-1}(x))} = \frac{1}{f'(f^{-1}(-2)} = \frac{1}{f'(1)} = \frac{1}{8}$}

@@ -1,0 +1,517 @@
+\documentclass{article}
+
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath, amssymb, amsthm} % For better use of Math expressions
+\usepackage{hyperref} % for adding hyperlinks to the document. 
+\usepackage{comment}
+\usepackage{marginnote} % Adding notes to the margin of the document
+\reversemarginpar % Optional: to switch margin sides
+\usepackage{xcolor} % For creating the the colorbox
+% For creating tcolorboxes. 
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\usepackage{lipsum}
+\usepackage{enumitem} % for enumerating items with letters from the alphabet.
+\usepackage{tabularx} % Enables tables with flexible-with columns
+\usepackage{etoolbox} % For custom labels and logic.
+\usepackage{array} % Extend column definitions in tables
+\usepackage{witharrows} % for adding arrows
+
+% ==== Customization ====
+\usepackage [letterpaper, top=1.0in, bottom=1.0in, left=1.0in, right=1.0in, heightrounded]{geometry} % Margins of the document. 
+\renewcommand{\baselinestretch}{1.2} % space line length
+\setlength{\parindent}{0pt} % Change the size of the tab
+\setlength{\parskip}{0.8em} %Change the size between paragraphs
+
+\title{\textbf{Cal 2 - Exam Question 34}}
+\author{Diana Guan}
+\date{Feb 2026}
+
+
+% ==== Custom Macros ====
+% Create a general counter that resets automatically per question
+\newcounter{solutionMainStep}
+\newcounter{solutionSubStep}[solutionMainStep]
+
+% Define a macro that takes question number, summary of step on (left), and explanation of the step on (right). 
+\renewcommand{\thesolutionSubStep}{\arabic{solutionMainStep}.\arabic{solutionSubStep}}
+
+% Define a macro for hyperlink
+\newcommand{\deflink}[2]{\hyperlink{def:#1}{\textcolor{blue}{\underline{#2}}}}
+\newcommand{\defanchor}[1]{\hypertarget{def:#1}{}}
+
+% Macro for main step 
+\newcommand{\mainStep}[2]{%
+    \stepcounter{solutionMainStep}
+    \setcounter{solutionSubStep}{0} % reset sub steps.
+    \label{a-#1:\arabic{solutionMainStep}}% adding a label to the macro for later reference.
+    % Code to organize and display the bubbles
+    \begin{tcolorbox}[
+        breakable,
+        colback = gray!5!white, 
+        colframe = gray!80!black, 
+        boxrule = 0.5pt,
+        arc = 2mm, 
+        left=0pt, right=0pt, top=2pt, bottom=2pt,
+        before skip=2pt, after skip = 2pt,
+        enhanced]
+        \textbf{Step \arabic{solutionMainStep}:} \textbf{\small #2}
+    \end{tcolorbox}
+}
+
+% Macro for substep (e.g., "Step 1.1:")
+\newcommand{\solutionStep}[3]{%
+    \stepcounter{solutionSubStep}
+    \label{a-#1:\arabic{solutionMainStep}.\arabic{solutionSubStep}}% adding a label to the macro for later reference.
+    % Code to organize and display the bubbles
+    \begin{tcolorbox}[
+        breakable,
+        colback = gray!5!white,
+        colframe = gray!80!black,
+        boxrule = 0.5pt,
+        arc = 2mm,
+        left=0pt, right=0pt, top=2pt, bottom=2pt,
+        before skip=2pt, after skip=2pt,
+        enhanced]
+        \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{5cm} X}
+            \textbf{Step \arabic{solutionMainStep}.\arabic{solutionSubStep}:}\\
+            \textbf{\small #2} & #3
+        \end{tabularx}
+    \end{tcolorbox}
+}
+
+% To reference a step:
+% Use \ref{a-<question>:<step>} anywhere in the text.
+% Example: \ref{a-2:1.2} refers to Step 1.2 of Question 2.
+
+% ==== Beginning of Document ==== 
+\begin{document}
+
+\maketitle
+
+    %Question 34
+    \section*{Question 34}
+    Evaluate
+    \[
+    \int \frac{x^2}{(4-x^2)^{3/2}}\, dx.
+    \]
+    
+    % Possible answers
+    \begin{enumerate}[label = \alph*.]
+        \item $\displaystyle \frac{2x}{\sqrt{4-x^2}} - 2\sin^{-1}\!\left(\frac{x}{2}\right) + C$
+        \item $\displaystyle \frac{x}{\sqrt{4-x^2}} - \sin^{-1}\!\left(\frac{x}{2}\right) + C$
+        \item $\displaystyle \frac{4}{\sqrt{4-x^2}} - 2\sin^{-1}\!\left(\frac{x}{2}\right) + C$
+        \item I do not know
+    \end{enumerate}
+
+    % Beginning of Solution Box
+     \begin{tcolorbox}[breakable, colback= blue!5!white, colframe= blue!50!black, title=\textbf{Solution: b) $\displaystyle \frac{x}{\sqrt{4-x^2}} - \sin^{-1}\!\left(\frac{x}{2}\right) + C$}]
+
+        % Step-by-step modular solution. 
+        %This solution is meant to be long with a lot more steps so that a 5th grader can understand the solution. 
+        \textbf{What this question is asking:} Compute an antiderivative by rewriting the
+        \deflink{denominator}{denominator} into a form that matches a standard \deflink{trig-sub}{trigonometric substitution}
+        pattern, then substitute back to write the final answer in terms of $x$.
+        
+        % ------- Start here adding the step-by-step solution --------
+        
+        % Step 1
+        \mainStep{1}{Rewrite the denominator $(4-x^2)^{\frac{3}{2}}$.}
+
+        % Step 1.1
+        \solutionStep{1}{Rewrite \deflink{frac-exp}{fractional exponents}}{
+        $\displaystyle a^\frac{m}{n}=\sqrt[n]{a^m}=\left(\sqrt[n]{a}\right)^m,\qquad \sqrt{a}=a^\frac{1}{2}$.
+        }
+        
+        % Step 1.2
+        \solutionStep{1}{Rewrite the power $\frac{3}{2}$}{
+        \[
+        \begin{aligned}
+        (4-x^2)^{\tikz[remember picture,baseline=(expA.base)] \node[fill=yellow,inner sep=1pt](expA){$\frac{3}{2}$};}
+        &= (4-x^2)^{\tikz[remember picture,baseline=(expB.base)] \node[fill=yellow,inner sep=1pt](expB){$\frac{1}{2}\cdot 3$};}
+        \quad \text{Rewrite }\frac{3}{2}=\frac{1}{2}\cdot 3
+        \end{aligned}
+        \]
+        \begin{tikzpicture}[remember picture,overlay]
+            \draw[->,>=stealth,bend left=20] ([yshift=7pt]expA.north) to ([yshift=7pt]expB.north);
+        \end{tikzpicture}
+        \[
+        \begin{WithArrows}
+        (4-x^2)^{\frac{1}{2}\cdot 3}
+        &= \left((4-x^2)^{\frac{1}{2}}\right)^3
+        \Arrow{Use $a^{bc}=(a^b)^c$}\\[1ex]
+        &= \left(\sqrt{4-x^2}\right)^3
+        \end{WithArrows}
+        \]
+        }
+
+        % Step 2
+         \mainStep{1}{Set up \deflink{trig-sub}{trigonometric substitution}.}
+
+        % Step 2.1
+        \solutionStep{1}{Define symbols}{
+        $a$: constant,\quad $x$: unknown variable,\quad $\theta$: angle.
+        }
+
+        % Step 2.2
+        \solutionStep{1}{Choose the substitution}{
+        From Step 1, the denominator contains $\sqrt{4-x^2}$, which matches the
+        pattern $\sqrt{a^2-x^2}$. For this specific pattern, use the trig substitution
+        $x=a\sin\theta$.
+        }
+
+        % Step 2.3
+        \solutionStep{1}{Identify $a$ and $x$}{
+        $\begin{aligned}[t]
+        \colorbox{yellow}{$4$}-x^2 &= \colorbox{yellow}{$2^2$}-x^2\\
+        a &= \colorbox{yellow}{$2$}\\
+        x &= a\sin\theta = \colorbox{yellow}{$2\sin\theta$}
+        \end{aligned}$
+        }
+
+        % Step 3
+        \mainStep{1}{Rewrite the numerator $x^2$.}
+        
+        % Step 3.1
+        \solutionStep{1}{Square both sides}{
+        $\begin{aligned}[t]
+            x &= 2\sin\theta \\
+            x^2 &= (2\sin\theta)^2
+        \end{aligned}$
+        }
+        
+        % Step 3.2
+        \solutionStep{1}{Apply $(ab)^2=a^2b^2$}{
+        $\begin{aligned}[t]
+        a &= \colorbox{yellow}{$2$}\\
+        b &= \colorbox{yellow}{$\sin\theta$}\\
+        (2\sin\theta)^{\colorbox{yellow}{$2$}} &= 2^{\colorbox{yellow}{$2$}}(\sin\theta)^{\colorbox{yellow}{$2$}}
+        \end{aligned}$
+        }
+
+        
+        % Step 3.3
+        \solutionStep{1}{Simplify}{
+        $\begin{aligned}[t]
+            2^2 &= 4\\
+            (\sin\theta)^2 &= \sin^2\theta \quad \text{(\deflink{notation}{notation}: shorthand)} \\
+            2^2(\sin\theta)^2 &= 4\sin^2\theta
+        \end{aligned}$
+        }
+
+        % Step 4
+        \mainStep{1}{Rewrite $4-x^2$ in terms of $\theta$.}
+
+        % Step 4.1
+        \solutionStep{1}{Substitute $x^2=4\sin^2\theta$}{
+        $\begin{aligned}[t]
+        4-\colorbox{yellow}{$x^2$}= 4-\colorbox{yellow}{$4\sin^2\theta$}
+        \end{aligned}$
+        }
+
+        % Step 4.2
+        \solutionStep{1}{Factor out 4}{
+        $\begin{WithArrows}
+        4-4\sin^2\theta
+        &= \colorbox{yellow}{$4$}(1)-\colorbox{yellow}{$4$}(\sin^2\theta)
+        \Arrow{Rewrite $4=\colorbox{yellow}{$4$}\cdot 1$ and \\ factor out $\colorbox{yellow}{$4$}$}\\[1ex]
+        &= \colorbox{yellow}{$4$}(1-\sin^2\theta)
+        \end{WithArrows}$
+        }
+
+        % Step 4.3
+        \solutionStep{1}{Use $1-\sin^2\theta=\cos^2\theta$}{
+        $\begin{WithArrows}
+        1-\sin^2\theta
+        &= \cos^2\theta
+        \Arrow{Use \deflink{pyth-id}{Pythagorean identity}, then multiply both sides by $\colorbox{yellow}{4}$}\\[1ex]
+        \colorbox{yellow}{$4$}(1-\sin^2\theta)
+        &= \colorbox{yellow}{$4$}(\cos^2\theta)
+        \Arrow{Plug in $x^2 = 4\sin^2\theta$}\\[1ex]
+        4-x^2
+        &= 4\cos^2\theta
+        \end{WithArrows}$
+        }
+      
+        % Step 5
+        \mainStep{1}{Compute $(4-x^2)^{\frac{3}{2}}$ after substitution.}
+
+        % Step 5.1
+        \solutionStep{1}{Substitute into $\left(\sqrt{4-x^2}\right)^3$}{
+        $\begin{WithArrows}
+        (4-x^2)^{\frac{3}{2}}
+        &= \left(\sqrt{4-x^2}\right)^3 
+        \Arrow{Substitute $\colorbox{yellow}{$4-x^2$}=\colorbox{yellow}{$4\cos^2\theta$}$}\\
+        \left(\sqrt{4-x^2}\right)^3
+        &= \left(\sqrt{4\cos^2\theta}\right)^3
+        \end{WithArrows}$
+        }
+        
+        % Step 5.2
+        \solutionStep{1}{Use $\sqrt{ab}=\sqrt{a}\sqrt{b}$}{
+        $\begin{aligned}[t]
+            a &=\colorbox{yellow}{$4$} \\
+            b &=\colorbox{yellow}{$\cos^2\theta$} \\
+            \sqrt{4\cos^2\theta} &=\sqrt4\,\sqrt{\cos^2\theta}
+            \quad \text{(\deflink{sqrt-rule}{rule}: }(ab)^{1/2}=a^{1/2}b^{1/2}\text{)}
+        \end{aligned}$
+        }
+        
+        % Step 5.3
+        \solutionStep{1}{Simplify $\sqrt4$}{
+        $\begin{WithArrows}
+            \sqrt4 &=2 
+            \Arrow{Multiply both sides by$\colorbox{yellow}{$\sqrt{\cos^2\theta}$}$}\\
+            \sqrt4\,\colorbox{yellow}{$\sqrt{\cos^2\theta}$} &=2\colorbox{yellow}{$\sqrt{\cos^2\theta}$}
+        \end{WithArrows}$
+        }
+
+        % Step 5.4
+        \solutionStep{1}{Use $\sqrt{u^2}=|u|$}{
+        $\begin{WithArrows}
+        u &= \colorbox{yellow}{$\cos\theta$}
+        \Arrow{Let $u=\colorbox{yellow}{$\cos\theta$}$}\\[1ex]
+        \sqrt{\cos^2\theta}
+        &= |\cos\theta|
+        \Arrow{Use $\sqrt{u^2}=|u|$}\\[1ex]
+        \colorbox{yellow}{$2$}\sqrt{\cos^2\theta}
+        &= \colorbox{yellow}{$2$}|\cos\theta|
+        \Arrow{Multiply both sides by \colorbox{yellow}{$2$}}\\[1ex]
+        \sqrt{4\cos^2\theta}
+        &= 2|\cos\theta|
+        \end{WithArrows}$
+        }
+
+
+        % Step 5.5
+        \solutionStep{1}{Cube the result}{
+        $\begin{aligned}[t]
+            \left(\sqrt{4\cos^2\theta}\right)\colorbox{yellow}{$^3$} &= (2|\cos\theta|)\colorbox{yellow}{$^3$}\\
+                    &= \colorbox{yellow}{$2^3$}|\cos\theta|^3 \\
+                    &= \colorbox{yellow}{$8$}|\cos\theta|^3
+        \end{aligned}$
+        }
+    
+
+        % Step 5.6
+        \solutionStep{1}{Remove the absolute value}{
+        $\begin{aligned}[t]
+            0 \le \theta \le \frac{\pi}{2} &\Rightarrow \cos\theta \ge 0\\
+            |\cos\theta| &= \cos\theta  since \cos\theta \ge 0 \\
+            8|\cos\theta|^3 &= 8\cos^3\theta\\
+            (4-x^2)^{\frac{3}{2}} &= 8\cos^3\theta
+        \end{aligned}$
+        }
+        
+        % Step 6
+        \mainStep{1}{Compute $dx$.}
+        
+% Step 6.1
+\solutionStep{1}{Differentiate $x=2\sin\theta$}{
+$\begin{WithArrows}
+x
+&= 2\sin\theta
+\Arrow{Differentiate both sides with respect to $\theta$}\\[1ex]
+\frac{dx}{d\theta}
+&= \frac{d}{d\theta}(2\sin\theta)
+\Arrow{Use constant multiple rule: $\frac{d}{d\theta}(c f(\theta))=c f'(\theta)$}\\[1ex]
+&= \colorbox{yellow}{$2$}\frac{d}{d\theta}(\sin\theta)
+\Arrow{Plug in $\frac{d}{d\theta}(\sin\theta)=\cos\theta$}\\[1ex]
+&= \colorbox{yellow}{$2$}\cos\theta
+\end{WithArrows}$
+}
+
+
+        % Step 6.2
+        \solutionStep{1}{Write $dx$}{
+        $\begin{aligned}[t]
+            \frac{dx}{d\theta} &= 2\cos\theta\\
+            \colorbox{yellow}{$d\theta$}\left(\frac{dx}{d\theta}\right) &= (2\cos\theta)\colorbox{yellow}{$d\theta$} \\
+            dx &= 2\cos\theta\, d\theta
+        \end{aligned}$
+        }
+        
+        % Step 7
+        \mainStep{1}{Substitute into the integral.}
+        
+        % Step 7.1
+        \solutionStep{1}{List substitutions}{
+        $\begin{aligned}[t]
+            x^2 &= 4\sin^2\theta\\
+            (4-x^2)^{\frac{3}{2}} &= 8\cos^3\theta\\
+            dx &= 2\cos\theta\, d\theta
+        \end{aligned}$
+        }
+        
+        % Step 7.2
+        \solutionStep{1}{Substitute}{
+        $\begin{aligned}[t]
+            \int \frac{x^2}{(4-x^2)^{\frac{3}{2}}}\,dx
+            &= \int \frac{\colorbox{yellow}{$4\sin^2\theta$}}{\colorbox{yellow}{$8\cos^3\theta$}}\,
+            \colorbox{yellow}{$(2\cos\theta\, d\theta)$}
+        \end{aligned}$
+        }
+        
+        % Step 8
+        \mainStep{1}{Simplify the integrand.}
+        
+        % Step 8.1
+        \solutionStep{1}{Multiply constants}{
+        $\begin{aligned}[t]
+        \int \frac{4\sin^2\theta}{8\cos^3\theta}\,\colorbox{yellow}{$2\cos\theta$}\, d\theta
+        &= \int \frac{4\cdot\colorbox{yellow}{$2$}\sin^2\theta\colorbox{yellow}{$\cos\theta$}}{8\cos^3\theta}\, d\theta\\
+        &= \int \frac{\colorbox{yellow}{$8$}\sin^2\theta\cos\theta}{8\cos^3\theta}\, d\theta
+        \end{aligned}$
+        }
+        
+        % Step 8.2
+        \solutionStep{1}{Cancel 8}{
+        $\begin{aligned}[t]
+        \int \frac{\colorbox{yellow}{$8$}\sin^2\theta\cos\theta}{\colorbox{yellow}{$8$}\cos^3\theta}\, d\theta
+        &= \int \frac{\sin^2\theta\cos\theta}{\cos^3\theta}\, d\theta
+        \end{aligned}$
+        }
+        
+        % Step 8.3
+        \solutionStep{1}{Cancel $\cos\theta$}{
+        $\begin{aligned}[t]
+        \cos^3\theta &= \cos^2\theta\cos\theta\\
+        \int \frac{\sin^2\theta\cos\theta}{\colorbox{yellow}{$\cos^3\theta$}}\, d\theta
+        &= \int \frac{\sin^2\theta\cos\theta}{\colorbox{yellow}{$\cos^2\theta\cos\theta$}}\, d\theta\\
+        &= \int \frac{\sin^2\theta}{\cos^2\theta}\, d\theta
+        \end{aligned}$
+        }
+        
+        
+        % Step 9
+        \mainStep{1}{Rewrite using tangent.}
+        
+        % Step 9.1
+        \solutionStep{1}{Use the definition of tangent}{
+        $\begin{aligned}[t]
+        \tan\theta &= \frac{\sin\theta}{\cos\theta}\\
+        \tan^2\theta &= \frac{\sin^2\theta}{\cos^2\theta}\\
+        \int \frac{\sin^2\theta}{\cos^2\theta}\, d\theta 
+        &= \int \tan^2\theta\, d\theta
+        \end{aligned}$
+        }
+        
+        % Step 10
+        \mainStep{1}{Integrate in $\theta$.}
+        
+        % Step 10.1
+        \solutionStep{1}{Use $\tan^2\theta=\sec^2\theta-1$}{
+        $\begin{aligned}[t]
+        \tan^2\theta &= \sec^2\theta - 1\\
+        \int \tan^2\theta\, d\theta
+        &= \int (\sec^2\theta-1)\, d\theta\\
+        &= \int \sec^2\theta\, d\theta - \int 1\, d\theta
+        \end{aligned}$
+        }
+        
+        % Step 10.2
+        \solutionStep{1}{Integrate}{
+        $\begin{aligned}[t]
+        \int \sec^2\theta\, d\theta &= \tan\theta\\
+        \int 1\, d\theta &= \theta\\
+        \int \tan^2\theta\, d\theta &= \tan\theta-\theta + C
+        \end{aligned}$
+        }
+        
+        % Step 11
+        \mainStep{1}{Convert back to $x$.}
+        
+        % Step 11.1
+        \solutionStep{1}{Find $\theta$}{
+        $\begin{aligned}[t]
+        x &= 2\sin\theta\\
+        \colorbox{yellow}{$\frac{1}{2}$}x &= \colorbox{yellow}{$\frac{1}{2}$}2\sin\theta \\
+        \frac{x}{2} &= \sin\theta \\
+        \theta &= \deflink{inv-sine}{\sin^{-1}}\!\left(\frac{x}{2}\right)
+        \end{aligned}$
+        }
+        
+        % Step 11.2
+        \solutionStep{1}{Find $\tan\theta$}{
+        $\begin{aligned}[t]
+        \sin\theta &= \frac{x}{2}\\
+        \text{opposite} &= \colorbox{yellow}{$x$},\quad \text{hypotenuse}=2\\
+        \text{adjacent}^2 &= 2^2-x^2 = 4-x^2\\
+        \text{adjacent} &= \colorbox{yellow}{$\sqrt{4-x^2}$}\\
+        \tan\theta &= \frac{\text{opposite}}{\text{adjacent}}
+        = \frac{x}{\sqrt{4-x^2}}
+        \end{aligned}$
+        }
+        
+        % Step 12
+        \mainStep{1}{Write the final answer and choose the correct option.}
+        
+        % Step 12.1
+        \solutionStep{1}{Substitute back}{
+        $\begin{aligned}[t]
+        \int \frac{x^2}{(4-x^2)^{\frac{3}{2}}}\,dx
+        &= \tan\theta-\theta + C\\
+        &= \colorbox{yellow}{$\frac{x}{\sqrt{4-x^2}}$}
+        - \colorbox{yellow}{$\sin^{-1}\!\left(\frac{x}{2}\right)$}
+        + C
+        \end{aligned}$
+        }
+        
+        % Step 12.2
+        \solutionStep{1}{Final answer}{
+        $\begin{aligned}[t]
+        \text{The correct option is } \colorbox{yellow}{$\text{b}$}.
+        \end{aligned}$
+        }
+        
+       
+    \end{tcolorbox}
+
+    \newpage
+    \section*{Definitions and Notation}
+
+    \defanchor{trig-sub}\textbf{Trigonometric substitution.}
+    A method for integrals involving radicals. Common patterns:
+    \[
+    \sqrt{a^2-x^2}: x=a\sin\theta,\qquad
+    \sqrt{a^2+x^2}: x=a\tan\theta,\qquad
+    \sqrt{x^2-a^2}: x=a\sec\theta.
+    \]
+
+    \defanchor{denominator}\textbf{Denominator.}
+    In a fraction $\frac{p(x)}{q(x)}$, the denominator is the bottom expression $q(x)$.
+    In Q34, it is $(4-x^2)^{3/2}$.
+
+    \defanchor{frac-exp}\textbf{Fractional exponents.}
+    \[
+    a^{m/n}=\sqrt[n]{a^m}=\left(a^{1/n}\right)^m.
+    \]
+    Example:
+    \[
+    (4-x^2)^{3/2}=\left((4-x^2)^{1/2}\right)^3=\left(\sqrt{4-x^2}\right)^3.
+    \]
+
+    \defanchor{notation}\textbf{Notation $\,\sin^2\theta$.}
+    This is shorthand for $(\sin\theta)^2$.
+
+    \defanchor{pyth-id}\textbf{Pythagorean identity.}
+    \[
+    \sin^2\theta+\cos^2\theta=1
+    \quad\Longleftrightarrow\quad
+    1-\sin^2\theta=\cos^2\theta.
+    \]
+
+    \defanchor{sqrt-rule}\textbf{Rule $\sqrt{ab}=\sqrt a\sqrt b$.}
+    For nonnegative $a,b$:
+    \[
+    \sqrt{ab}=(ab)^{1/2}=a^{1/2}b^{1/2}=\sqrt a\sqrt b.
+    \]
+
+    \defanchor{inv-sine}\textbf{Inverse sine $\sin^{-1}(x)$.}
+    Also written $\arcsin(x)$, it returns the angle whose sine is $x$.
+    If $\sin\theta=\frac{x}{2}$, then
+    \[
+    \theta=\sin^{-1}\!\left(\frac{x}{2}\right).
+    \]
+
+\end{document}

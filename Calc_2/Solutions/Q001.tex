@@ -1,0 +1,167 @@
+% QUESTION: 1
+% STATUS: REVIEWED
+% AUTHOR: AJ
+% CREATED: 
+% LAST UPDATED: 
+% NOTES: 
+
+\section*{Question 1}
+    Let $f(x) = x^5 + x^3 - 4$. Find the value of $\frac{d}{dx}f^{-1}(x)$ at the point $x = -2$.  
+    
+    % Possible answers
+    \begin{enumerate}[label = \alph*.]
+        \item $-\frac{1}{44}$
+        \item $\frac{1}{92}$
+        \item $\frac{1}{8}$
+        \item I do not know
+    \end{enumerate}
+
+\setcounter{solutionMainStep}{0}
+\setcounter{solutionSubStep}{0}
+
+% Beginning of Solution Box
+%\begin{tcolorbox}[colback= blue!5!white, colframe= blue!50!black, title=\textbf{Solution: c) $3 \ln |x^5 + 15| + C $}]
+ \begin{tcolorbox}[breakable, colback= blue!5!white, colframe= blue!50!black, title=\textbf{Solution: c) $\frac{1}{8}$}]
+
+    % Step-by-step modular solution.
+    %This solution is meant to be long with a lot more steps so that a 5th grader can understand the solution.
+
+    % ------- Start here adding the step-by-step solution --------
+
+    % === Step Formatting Summary ===
+    % \mainStep{<question#>}{<Step title>}
+    %   Creates a main step like "Step 1:", resets substep counter.
+    %
+    % \solutionStep{<question#>}{<Short title>}{<Detailed explanation>}
+    %   Creates a substep like "Step 1.1:" under the current main step.
+
+    % Step 1
+     \mainStep{1}{Find $f'(x)$(derivative of $f(x)$).}
+
+    % Step 1.1
+    \solutionStep{1}{Apply the power rule to $f'(x)$}{\colorbox{yellow}{Power Rule:} if $g(x) = x^n$, then $g'(x) = nx^{n-1}$. }
+
+    % Step 1.2
+    \solutionStep{1}{Differentiate $x^5$}{ $\frac{d}{dx}(x^5)$ = $5x^4$  }
+
+    % Step 1.3
+    \solutionStep{1}{ Differentiate $x^3$}{ $\frac{d}{dx}(x^3)$ = $3x^2$  }
+
+     % Step 1.4
+    \solutionStep{1}{Differentiate the constant -4}{ $\frac{d}{dx}(-4)$ = $0$  }
+
+     % Step 1.5
+    \solutionStep{1}{Combine the results}{ $f'(x) = 5x^4+3x^2$  }
+
+    % Step 2
+    \mainStep{1}{Find $f^{-1}(-2)$ by using \colorbox{yellow} {Inverse Function}: if $f(a)=b$ then $f^{-1}(b) =a$}
+
+    % Step 2.1
+    \solutionStep{1}{Set up the equation $f(x) = -2.$}{$x^5+x^3-4 = -2$}
+
+    % Step 2.2 Version 1
+    \solutionStep{1}{Solve for x: }{
+
+    \begin{flushleft}
+        \begin{tabbing}
+        \hspace{4.5cm} \= \kill % Set tab stop for aligning explanations to the right.
+            % Start math block and align all equations at the equal sign.
+            $\begin{aligned}[t] % [t] use to align the top of this aligned environment with the top of the line or cell it's in
+                x^5 + x^3 - 4 &= -2 \\
+                x^5 + x^3 - 4 \colorbox{yellow}{+ 4}  &= -2 \colorbox{yellow}{+ 4} \\
+                x^5 + x^3 &= 2
+            \end{aligned}$ \>
+            % Now list matching explanations, one per line
+            \begin{tabular}[t]{@{}l@{}} % Left-align text with no extra padding
+                Original equation. \\ % English explanations
+                Add 4 to each side. \\
+                Simplify both sides.
+            \end{tabular}
+        \end{tabbing}
+    \end{flushleft}
+    }
+
+    % Step 2.3
+    \solutionStep{1}{Test simple value 1 to find solution}{
+    \begin{flushleft}
+        \begin{tabbing}
+        \hspace{4.5cm} \= \kill % Set tab stop for aligning explanations to the right.
+            % Start math block and align all equations at the equal sign.
+            $\begin{aligned}[t] % [t] use to align the top of this aligned environment with the top of the line or cell it's in
+                f(x) &= x^5 + x^3 - 4 \\
+                f(\colorbox{yellow}{1}) &= \colorbox{yellow}{1}^5 + \colorbox{yellow}{1}^3 - 4  \\
+                f(1)&= 1 + 1 - 4 \\
+                f(1) &= -2
+            \end{aligned}$ \>
+            % Now list matching explanations, one per line
+            \begin{tabular}[t]{@{}l@{}} % Left-align text with no extra padding
+                \\ [1ex]% English explanations
+                Try $x=1$ in $f(x)$. \\ [1ex]
+                Simplify. \\ [1ex]
+
+            \end{tabular}
+        \end{tabbing}
+    \end{flushleft}
+    }
+
+    % Step 2.4
+    \solutionStep{1}{Conclude}{Since $f(1) = -2$,  $f^{-1}(-2) = 1$ due to Inverse Function}
+
+     % Step 3
+    \mainStep{1}{ Evaluate $f'$ at $f^{-1}(-2)$}
+
+    % Step 3.1
+    \solutionStep{1}{Substitute $x=1$ into $f'(x)$}{
+    \begin{flushleft}
+        \begin{tabbing}
+        \hspace{4.5cm} \= \kill % Set tab stop for aligning explanations to the right.
+            % Start math block and align all equations at the equal sign.
+            $\begin{aligned}[t] % [t] use to align the top of this aligned environment with the top of the line or cell it's in
+                 f'(x) &= 5x^4+3x^2\\
+                 f'(\colorbox{yellow}{1}) &= 5(\colorbox{yellow}{1})^4 + 3(\colorbox{yellow}{1})^2 \\
+                 f'(1) &= 5(1) + 3(1)\\
+                 f'(1) &= 5 + 3 \\
+                 f'(1) &= 8
+            \end{aligned}$ \>
+            % Now list matching explanations, one per line
+            \begin{tabular}[t]{@{}l@{}} % Left-align text with no extra padding
+                \\ [1ex]% English explanations
+                Substitute $x$ with $1$ in $f'(x)$ \\
+                \\
+                \\
+
+            \end{tabular}
+        \end{tabbing}
+    \end{flushleft}
+    }
+
+     % Step 4
+    \mainStep{1}{Apply the inverse function derivative formula}
+
+    % Step 4.1
+    \solutionStep{1}{Substitute into the formula}{
+    \begin{flushleft}
+        \begin{tabbing}
+        \hspace{4.5cm} \= \kill % Set tab stop for aligning explanations to the right.
+            % Start math block and align all equations at the equal sign.
+            $\begin{aligned}[t] % [t] use to align the top of this aligned environment with the top of the line or cell it's in
+                 \frac{d}{dx}f^{-1}(x) &= \frac{1}{f'(f^{-1}(x))}\\
+                 \frac{d}{dx}f^{-1}(x) &= \frac{1}{f'(f^{-1}(\colorbox{yellow}{-2}))} \\
+                 \frac{d}{dx}f^{-1}(x) &= \frac{1}{\colorbox{yellow}{f'(1)}}\\
+                \frac{d}{dx}f^{-1}(x) &= \frac{1}{8}
+            \end{aligned}$ \>
+            % Now list matching explanations, one per line
+            \begin{tabular}[t]{@{}l@{}} % Left-align text with no extra padding
+                Original Problem Equation.\\ [2.5ex]% English explanations
+                Substitute $x$ with $-2$\\ [2.5ex]
+                 $f'(1) = 8$\\ [2.5ex]
+            \end{tabular}
+        \end{tabbing}
+    \end{flushleft}
+    }
+
+     % Step 5
+    \mainStep{1}{Final Answer: the correct option is C. $\frac{1}{8}$ }
+    
+\end{tcolorbox}
+\newpage

@@ -1,0 +1,77 @@
+% QUESTION: 2
+% STATUS: DRAFT
+% AUTHOR: DG
+% CREATED: 2026-02-02
+% LAST UPDATED: 2026-02-02
+% NOTES: 
+
+% Qustion
+\section*{Question 2}
+Evaluate $\int\frac{15x^4}{x^5+15}\,dx$.  
+    
+% Multiple Choices
+\begin{enumerate}[label = \alph*.]
+    \item $\frac{3x^5}{\frac{1}{6}x^6+15x}+C$
+    \item $15\ln|x|+\frac{1}{5}x^4+C$
+    \item $3\ln|x^5+15|+C$
+    \item I do not know
+\end{enumerate}
+
+\setcounter{solutionMainStep}{0}
+\setcounter{solutionSubStep}{0}
+
+% Solution Box
+\begin{tcolorbox}[breakable, colback= blue!5!white, colframe= blue!50!black, title=\textbf{Solution: c) $3\ln|x^5+15|+C$}]
+
+    % Step 1
+    \mainStep{2}{Use U Substitution, Let $ u = x^5+15$}
+
+    % Step 1.1
+    \solutionStep{2}{Differentiate both sides of the equation }{ $\frac{du}{dx} = \frac{d}{dx}(x^5+15)$  }
+
+    % Step 1.2
+    \solutionStep{2}{Differentiate $x^5$}{ $\frac{d}{dx}(x^5) = 5x^4$  }
+        
+    % Step 1.3
+    \solutionStep{2}{Differentiate the constant $15$}{ $\frac{d}{dx}(15) = 0$  }
+
+    % Step 1.4
+    \solutionStep{2}{Combine the results}{ $ \frac{d}{dx}(x^5+15) = 5x^4$  }
+
+    % Step 1.5
+    \solutionStep{2}{Multiply both sides by $dx$}{ $ du = 5x^4 dx$  }
+
+    % Step 2
+    \mainStep{2}{Rewrite $\int\frac{15x^4}{x^5+15}\,dx$ in terms of u.}
+
+    % Step 2.1
+    \solutionStep{2}{Rewrite numerator}{$15x^4dx = 3(5x^4dx) = 3du$ since $ du = 5x^4 dx$}
+
+    % Step 2.2 
+    \solutionStep{2}{Rewrite denominator}{$x^5+15 = u$}
+
+    % Step 2.3
+    \solutionStep{2}{Combine the fraction}{$\int\frac{15x^4}{x^5+15}\,dx = \int\frac{3}{u}du$}
+
+    % Step 3
+    \mainStep{2}{ Evaluate $\int\frac{3}{u}du$}
+        
+    % Step 3.1
+    \solutionStep{2}{Factor out the constant}{$\int\frac{3}{u}du = 3\int\frac{1}{u}du$}
+
+    % Step 3.2
+    \solutionStep{2}{Evaluate the integral}{$\int\frac{1}{u}du = \ln{|u|} + C$}
+        
+    % Step 3.3
+    \solutionStep{2}{Combine the solution}{$\int\frac{3}{u}du = 3\int\frac{1}{u}du = 3(\ln{|u|})+ C = 3\ln{|u|} + C$}
+        
+    % Step 4
+    \mainStep{2}{Substitute back to x}
+
+    % Step 4.1
+    \solutionStep{2}{Replace $u$ with $x^5+15$}{$3\ln{|u|} + C =3\ln{|x^5+15|} + C$}
+
+    % Step 5
+    \mainStep{2}{Final Answer: the correct option is C. $3\ln|x^5+15|+C$ }
+\end{tcolorbox}
+\newpage  

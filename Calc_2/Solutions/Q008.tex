@@ -1,0 +1,129 @@
+% QUESTION: 8
+% STATUS: DRAFT
+% AUTHOR: DG
+% CREATED: 2026-02-02
+% LAST UPDATED: 2026-02-09
+% NOTES: 
+% Need to expand Step 1.1 and 1.2
+% For Step 3.4, Do we need to show how to repeat 25 times? 
+
+% Question
+\section*{Question 8}
+Evaluate $\displaystyle\lim_{x\to\infty}\frac{x^{25}}{2^x}$.
+    
+% Multiple Choices
+\begin{enumerate}[label = \alph*.]
+    \item 0
+    \item $\displaystyle\frac{25!}{(\ln 2)^{25}}$
+    \item $\infty$
+    \item I don't know
+\end{enumerate}
+
+\setcounter{solutionMainStep}{0}
+\setcounter{solutionSubStep}{0}
+
+% Solution Box
+\begin{tcolorbox}[breakable, colback= blue!5!white, colframe= blue!50!black, title=\textbf{Solution: a) 0}]
+
+    % Step 1
+    \mainStep{8}{Identify the limit form}
+
+    % Step 1.1
+    \solutionStep{8}{Evaluate numerator as $x\to\infty$}{
+    $x^{25}\to\infty$
+    }
+
+    % Step 1.2
+    \solutionStep{8}{Evaluate denominator as $x\to\infty$}{
+    $2^x\to\infty$
+    }
+
+    % Step 1.3
+    \solutionStep{8}{Determine indeterminate form}{
+    $\lim_{x\to\infty}\frac{x^{25}}{2^x}=\frac{\infty}{\infty}$}
+
+    % Step 2
+    \mainStep{8}{Apply L'Hôpital's Rule (First Time)}
+
+    % Step 2.1
+    \solutionStep{8}{L'Hôpital's Rule}{
+    \colorbox{yellow}{L'Hôpital's Rule:} If $\lim_{x\to a}\frac{f(x)}{g(x)}$ gives $\frac{0}{0}$ or $\frac{\infty}{\infty}$, then 
+    $\displaystyle\lim_{x\to a}\frac{f(x)}{g(x)}=\lim_{x\to a}\frac{f'(x)}{g'(x)}$.
+    }
+
+    % Step 2.2
+    \solutionStep{8}{Differentiate numerator}{
+    \colorbox{yellow}{Power Rule:} If $g(x)=x^n$, then $g'(x)=nx^{n-1}$.
+    }
+
+    % Step 2.3
+    \solutionStep{8}{Apply power rule}{
+    $\frac{d}{dx}(x^{25})=25x^{24}$
+    }
+
+    % Step 2.4
+    \solutionStep{8}{Differentiate denominator}{
+    \colorbox{yellow}{Exponential Derivative Rule:} $\frac{d}{dx}(a^x)=a^x\ln a$.
+    }
+
+    % Step 2.5
+    \solutionStep{8}{Apply exponential rule}{
+    $\frac{d}{dx}(2^x)=2^x\ln 2$
+    }
+
+    % Step 2.6
+    \solutionStep{8}{Rewrite limit}{
+    $\displaystyle\lim_{x\to\infty}\frac{25x^{24}}{2^x\ln 2}$
+    }
+
+    % Step 3
+    \mainStep{8}{Apply L'Hôpital's Rule (Second Time)}
+
+    % Step 3.1
+    \solutionStep{8}{Differentiate numerator again}{
+    $\frac{d}{dx}(25x^{24})=25\cdot24x^{23}$
+    }
+
+    % Step 3.2
+    \solutionStep{8}{Differentiate denominator again}{
+    $\frac{d}{dx}(2^x\ln 2)=\ln 2\cdot(2^x\ln 2)=2^x(\ln 2)^2$
+    }
+
+    % Step 3.3
+    \solutionStep{8}{Rewrite limit}{
+    $\displaystyle\lim_{x\to\infty}\frac{25\cdot24x^{23}}{2^x(\ln 2)^2}$
+    }
+
+    % Step 3.4
+    \solutionStep{8}{Continue applying L'Hôpital}{
+    After repeating this process 25 times
+    }
+
+    % Step 3.5
+    \solutionStep{8}{Final differentiated form}{
+    $\displaystyle\lim_{x\to\infty}\frac{25!}{2^x(\ln 2)^{25}}$
+    }
+
+    % Step 4
+    \mainStep{8}{Evaluate the limit}
+
+    % Step 4.1
+    \solutionStep{8}{Analyze numerator}{
+    $25!$ is a constant.
+    }
+
+    % Step 4.2
+    \solutionStep{8}{Analyze denominator}{
+    $2^x(\ln 2)^{25}\to\infty$
+    }
+
+    % Step 4.3
+    \solutionStep{8}{Evaluate limit}{
+    $\lim_{x\to\infty}\frac{25!}{2^x(\ln 2)^{25}} = \frac{\text{constant}}{\infty}=0$
+    }
+
+    % Step 5
+    \mainStep{8}{Final Answer: the correct option is A. 0 }
+
+\end{tcolorbox}
+\newpage

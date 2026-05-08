@@ -1,0 +1,139 @@
+% QUESTION: 6
+% STATUS: DRAFT
+% AUTHOR: DG
+% CREATED: 2026-02-02
+% LAST UPDATED: 2026-02-07
+% NOTES: Need to improve the following
+%1. Need to expand Step 1.1 and 1.2
+%2. More steps for 3.6 and 4.5
+%3. Show the details of how to to go from 5.1 to 5.2
+
+% Question
+\section*{Question 6}
+Evaluate $\displaystyle\lim_{x\to\infty}\frac{\ln(3x^2+7)}{\ln(5x^2+6)}$.
+    
+% Multiple Choices
+\begin{enumerate}[label = \alph*.]
+    \item $\displaystyle\ln\left(\frac{3}{5}\right)$
+    \item 1
+    \item $\displaystyle\frac{5}{3}$
+    \item I do not know
+\end{enumerate}
+
+\setcounter{solutionMainStep}{0}
+\setcounter{solutionSubStep}{0}
+
+% Solution Box
+\begin{tcolorbox}[breakable, colback= blue!5!white, colframe= blue!50!black, title=\textbf{Solution: b) 1}]
+
+    % Step 1
+    \mainStep{6}{Identify the limit form}
+
+    % Step 1.1
+    \solutionStep{6}{Evaluate the numerator as $x\to\infty$}{ $3x^2+7 \to \infty$, therefore $\ln(3x^2+7)\to\infty$ }
+
+    % Step 1.2
+    \solutionStep{6}{Evaluate the denominator as $x\to\infty$}{ $5x^2+6 \to \infty$, therefore $\ln(5x^2+6)\to\infty$ }
+
+    % Step 1.3
+    \solutionStep{6}{Determine the indeterminate form}{ The limit is of the form $\frac{\infty}{\infty}$ }
+
+    % Step 2
+    \mainStep{6}{Apply L'Hôpital's Rule}
+
+    % Step 2.1
+    \solutionStep{6}{State L'Hôpital's Rule}{\colorbox{yellow}{L'Hôpital's Rule:} If $\lim_{x\to a}\frac{f(x)}{g(x)}$ is $\frac{0}{0}$ or $\frac{\infty}{\infty}$, then $\lim_{x\to a}\frac{f(x)}{g(x)} = \lim_{x\to a}\frac{f'(x)}{g'(x)}$ }
+
+    % Step 2.2
+    \solutionStep{6}{Differentiate numerator and denominator}{ $\displaystyle\lim_{x\to\infty}\frac{\ln(3x^2+7)}{\ln(5x^2+6)} = \lim_{x\to\infty}\frac{\frac{d}{dx}\ln(3x^2+7)}{\frac{d}{dx}\ln(5x^2+6)}$ }
+
+    % Step 3
+    \mainStep{6}{Differentiate the numerator}
+
+    % Step 3.1
+    \solutionStep{6}{Use chain rule}{\colorbox{yellow}{Chain Rule:} if $F(x)=\ln(h(x))$, then $F'(x)=\frac{h'(x)}{h(x)}$. }
+
+    % Step 3.2
+    \solutionStep{6}{Differentiate inside function $3x^2+7$}{\colorbox{yellow}{Power Rule:} if $g(x)=x^n$, then $g'(x)=nx^{n-1}$. }
+
+    % Step 3.3
+    \solutionStep{6}{Apply the power rule}{ $\frac{d}{dx}(3x^2)=3\cdot2x^{2-1}=6x$ }
+
+    % Step 3.4
+    \solutionStep{6}{Differentiate the constant}{ $\frac{d}{dx}(7)=0$ }
+
+    % Step 3.5
+    \solutionStep{6}{Combine the results}{ $\frac{d}{dx}(3x^2+7)=6x$ }
+
+    % Step 3.6
+    \solutionStep{6}{Apply chain rule result}{ $\frac{d}{dx}\ln(3x^2+7)=\frac{6x}{3x^2+7}$ }
+
+    % Step 4
+    \mainStep{6}{Differentiate the denominator}
+
+    % Step 4.1
+    \solutionStep{6}{Apply chain rule again}{ $\frac{d}{dx}\ln(5x^2+6)=\frac{(5x^2+6)'}{5x^2+6}$ }
+
+    % Step 4.2
+    \solutionStep{6}{Differentiate $5x^2$}{ $5\cdot2x^{2-1}=10x$ }
+
+    % Step 4.3
+    \solutionStep{6}{Differentiate the constant}{ $\frac{d}{dx}(6)=0$ }
+
+    % Step 4.4
+    \solutionStep{6}{Combine the results}{ $\frac{d}{dx}(5x^2+6)=10x$ }
+
+    % Step 4.5
+    \solutionStep{6}{Apply chain rule result}{ $\frac{d}{dx}\ln(5x^2+6)=\frac{10x}{5x^2+6}$ }
+
+    % Step 5
+    \mainStep{6}{Rewrite the limit using derivatives}
+
+    % Step 5.1
+    \solutionStep{6}{Substitute derivatives into the limit}{ 
+    $\displaystyle\lim_{x\to\infty}\frac{\frac{6x}{3x^2+7}}{\frac{10x}{5x^2+6}}$ }
+
+    % Step 5.2
+    \solutionStep{6}{Rewrite complex fraction as multiplication}{ 
+    $\displaystyle\lim_{x\to\infty}\left(\frac{6x}{3x^2+7}\cdot\frac{5x^2+6}{10x}\right)$ }
+
+    % Step 5.3
+    \solutionStep{6}{Multiply numerators and denominators}{
+    $\displaystyle\lim_{x\to\infty}\frac{6x(5x^2+6)}{10x(3x^2+7)}$ }
+
+    % Step 5.4
+    \solutionStep{6}{Distribute $6x$ in numerator}{
+    $6x(5x^2+6)=30x^3+36x$ }
+
+    % Step 5.5
+    \solutionStep{6}{Distribute $10x$ in denominator}{
+    $10x(3x^2+7)=30x^3+70x$ }
+
+    % Step 5.6
+    \solutionStep{6}{Rewrite the limit}{
+    $\displaystyle\lim_{x\to\infty}\frac{30x^3+36x}{30x^3+70x}$ }
+
+    % Step 6
+    \mainStep{6}{Evaluate the limit as $x\to\infty$}
+
+    % Step 6.1
+    \solutionStep{6}{Factor highest power $x^3$ from numerator and denominator}{
+    $\displaystyle\frac{x^3(30+\frac{36}{x^2})}{x^3(30+\frac{70}{x^2})}$ }
+
+    % Step 6.2
+    \solutionStep{6}{Cancel $x^3$}{
+    $\displaystyle\frac{30+\frac{36}{x^2}}{30+\frac{70}{x^2}}$ }
+
+    % Step 6.3
+    \solutionStep{6}{Evaluate as $x\to\infty$}{
+    $\frac{36}{x^2}\to0$ and $\frac{70}{x^2}\to0$ }
+
+    % Step 6.4
+    \solutionStep{6}{Compute final value}{
+    $\displaystyle\frac{30+0}{30+0}=1$ }
+
+    % Step 7
+    \mainStep{6}{Final Answer: the correct option is B. 1 }
+
+\end{tcolorbox}
+\newpage

@@ -1,0 +1,62 @@
+\documentclass{article}
+
+\usepackage[letterpaper, margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{hyperref}
+\usepackage{xcolor}
+
+\title{Q34 Definitions and Rules}
+\author{Cal 2 Support Notes}
+\date{Feb 2026}
+
+\begin{document}
+\maketitle
+
+This reference sheet explains key terms and rules used in Question 34.
+
+\section*{Trigonometric substitution}
+A method for integrals involving radicals. Common patterns:
+\[
+\sqrt{a^2-x^2}:\ x=a\sin\theta,\qquad
+\sqrt{a^2+x^2}:\ x=a\tan\theta,\qquad
+\sqrt{x^2-a^2}:\ x=a\sec\theta.
+\]
+\textbf{Example:} if $\sqrt{4-x^2}$ appears, use $a=2$ so $x=2\sin\theta$.
+
+\section*{Denominator}
+In a fraction $\frac{p(x)}{q(x)}$, the denominator is the bottom expression $q(x)$.
+In Q34, the denominator is $(4-x^2)^{3/2}$.
+
+\section*{Fractional exponents}
+\[
+a^{m/n}=\sqrt[n]{a^m}=\left(a^{1/n}\right)^m.
+\]
+\textbf{Example:}
+\[
+(4-x^2)^{3/2}=\left((4-x^2)^{1/2}\right)^3=\left(\sqrt{4-x^2}\right)^3.
+\]
+
+\section*{Notation: $\sin^2\theta$}
+$\sin^2\theta$ means $(\sin\theta)^2$. This is standard shorthand.
+
+\section*{Pythagorean identity}
+\[
+\sin^2\theta+\cos^2\theta=1
+\quad\Longleftrightarrow\quad
+1-\sin^2\theta=\cos^2\theta.
+\]
+
+\section*{Rule: $\sqrt{ab}=\sqrt a\sqrt b$}
+For nonnegative $a,b$:
+\[
+\sqrt{ab}=(ab)^{1/2}=a^{1/2}b^{1/2}=\sqrt a\sqrt b.
+\]
+
+\section*{Inverse sine $\sin^{-1}(x)$}
+$\sin^{-1}(x)$ (also written $\arcsin(x)$) returns the angle whose sine is $x$.
+\textbf{Example:} if $\sin\theta=\frac{x}{2}$, then
+\[
+\theta=\sin^{-1}\!\left(\frac{x}{2}\right).
+\]
+
+\end{document}
